@@ -2,8 +2,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from data import *
 from locators import TestLocators
-from tests.conftest import driver
-
+from locators import Errors
 
 class TestsRegistration:
 
@@ -18,7 +17,7 @@ class TestsRegistration:
         driver.find_element(*TestLocators.REGISTRATION_BUTTON).click()
         text_error = driver.find_element(*TestLocators.INCORRECT_PASSWORD).text
         assert text_error == "Некорректный пароль"
-        print(text_error)
+
 
     def test_registration_true(self, driver):
         driver.get(URL)
@@ -29,4 +28,9 @@ class TestsRegistration:
         driver.find_element(*TestLocators.EMAIL_FIELD_REG).send_keys(EMAIL)
         driver.find_element(*TestLocators.PASSWORD_FIELD).send_keys(PASSWORD)
         driver.find_element(*TestLocators.REGISTRATION_BUTTON).click()
-        print("Регистрация успешна!")
+
+        WebDriverWait(driver, timeout=3).until(
+            expected_conditions.text_to_be_present_in_element(
+                (TestLocators.ERR_VALIDATION), Errors.USER_ALREADY_EXIST
+            )
+        )

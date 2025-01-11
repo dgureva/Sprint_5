@@ -1,21 +1,18 @@
 from data import *
 from locators import TestLocators
 
-
 class TestsConstructorSection:
 
-    def test_section_bun(self, driver):
+    def test_check_tabs(self, driver):
         driver.get(URL)
-        driver.find_element(*TestLocators.CONSTRUCTOR_SAUCES).click()
-        driver.find_element(*TestLocators.CONSTRUCTOR_BUN).click()
-        assert driver.find_element(*TestLocators.CONSTRUCTOR_BUN).text == "Булки"
 
-    def test_section_sauces(self, driver):
-        driver.get(URL)
-        driver.find_element(*TestLocators.CONSTRUCTOR_SAUCES).click()
-        assert driver.find_element(*TestLocators.CONSTRUCTOR_SAUCES).text == "Соусы"
+        locators = [
+            TestLocators.CONSTRUCTOR_SAUCES,
+            TestLocators.CONSTRUCTOR_BUN,
+            TestLocators.CONSTRUCTOR_FILLINGS
+        ]
 
-    def test_section_fillings(self, driver):
-        driver.get(URL)
-        driver.find_element(*TestLocators.CONSTRUCTOR_FILLINGS).click()
-        assert driver.find_element(*TestLocators.CONSTRUCTOR_FILLINGS).text == "Начинки"
+        for locator in locators:
+            driver.find_element(*locator).click()
+            current_class = driver.find_element(*locator).get_attribute('class')
+            assert "tab_tab_type_current" in current_class

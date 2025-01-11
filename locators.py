@@ -33,10 +33,15 @@ class TestLocators:
     # Кнопка перехода в конструктор
     CONSTRUCTOR_BUTTON = By.XPATH, '//p[text() = "Конструктор"]'
     # Вкладка "Булки"
-    CONSTRUCTOR_BUN = By.XPATH, '//span[text() = "Булки"]'
+    CONSTRUCTOR_BUN = By.XPATH, "//div[contains(@class, 'noselect') and contains(., 'Булки')]"
     # Вкладка "Соусы"
-    CONSTRUCTOR_SAUCES = By.XPATH, '//span[text() = "Соусы"]'
+    CONSTRUCTOR_SAUCES = By.XPATH, "//div[contains(@class, 'noselect') and contains(., 'Соусы')]"
     # Вкладка "Начинки"
-    CONSTRUCTOR_FILLINGS = By.XPATH, '//span[text() = "Начинки"]'
+    CONSTRUCTOR_FILLINGS = By.XPATH, "//div[contains(@class, 'noselect') and contains(., 'Начинки')]"
     # Кнопка "Выход"
     LOGOUT_BUTTON = By.XPATH, '//*[text() = "Выход"]'
+    # Ошибка валидации
+    ERR_VALIDATION = By.XPATH, "//p[contains(@class, 'input__error text_type_main-default')]"
+
+class Errors:
+    USER_ALREADY_EXIST = "Такой пользователь уже существует"
