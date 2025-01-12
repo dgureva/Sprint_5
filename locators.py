@@ -40,8 +40,3 @@ class TestLocators:
     CONSTRUCTOR_FILLINGS = By.XPATH, "//div[contains(@class, 'noselect') and contains(., 'Начинки')]"
     # Кнопка "Выход"
     LOGOUT_BUTTON = By.XPATH, '//*[text() = "Выход"]'
-    # Ошибка валидации
-    ERR_VALIDATION = By.XPATH, "//p[contains(@class, 'input__error text_type_main-default')]"
-
-class Errors:
-    USER_ALREADY_EXIST = "Такой пользователь уже существует"
