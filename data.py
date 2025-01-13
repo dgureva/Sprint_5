@@ -1,0 +1,5 @@
+URL = "https://stellarburgers.nomoreparties.site/"
+EMAIL = "DariaGureva_13a_996@yandex.ru"
+PASSWORD = "Daria1"
+NAME = "Дарья"
+LOGIN_WINDOW_URL = "https://stellarburgers.nomoreparties.site/login"
